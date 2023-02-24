@@ -5,6 +5,6 @@ module.exports = {
 		.setName('install')
 		.setDescription('Mod installation guide'),
 	async execute(interaction) {
-		await interaction.reply({ content: ' https://gamebanana.com/tuts/15379'});
+		await interaction.reply({ content: 'https://gamebanana.com/tuts/15379'});
 	},
 };
