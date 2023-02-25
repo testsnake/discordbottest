@@ -75,7 +75,7 @@ function errMsg(err) {
 
 
 // Event Triggers
-client.once(Events.ClientReady, async client => {
+client.once("ready", async client => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
 	client.user.setActivity('Eden Project');
 	const loggingChannelId = '1008978799989362808';
@@ -83,7 +83,7 @@ client.once(Events.ClientReady, async client => {
 	if (!loggingChannel) return;
 	const embed = {
 		color: parseInt('86cecb', 16),
-		description: `おはよう！ MikuBot 0.2 is Ready!`,
+		description: `おはよう！ MikuBot 0.2a is Ready!`,
 		timestamp: new Date()
 	};
 	loggingChannel.send({ embeds: [embed] });
