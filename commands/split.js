@@ -1,5 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
+const fs = require('fs');
+const mikuBotVer = fs.readFileSync('./versionID.txt', 'utf8');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -16,7 +18,9 @@ module.exports = {
 				{ name: 'When', value: 'This is planned for Version 5 of Eden Project\nAs of Feb 23rd, 2023 we have not begun working on this, so stay tuned for updates'},
 				{ name: 'Why', value: 'Eden Project hit 29.5GB with the release of version 4 and its just not sustainable for many users.\nWhile we have the lite version (!lite for info), its still 10GB which is a lot for a mod.'},
 				{ name: 'How', value: 'I dunno'}
-			);
+			)
+			.setFooter({ text: `${mikuBotVer}`})
+
 		await interaction.reply({ embeds: [helpEmbed] });
 	},
 };

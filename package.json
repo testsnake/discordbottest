@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "collections": "^5.1.13",
+    "discord-bot-youtube-notifications": "^1.1.5",
     "discord.js": "^14.7.1"
   }
 }

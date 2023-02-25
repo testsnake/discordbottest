@@ -1,12 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder, Discord } = require('discord.js');
-const { token } = require('./config.json');
+const { token } = require('./config.json');  // Needs to be added for bot use
+const mikuBotVer = fs.readFileSync('./versionID.txt', 'utf8');
+const botAvatarURL = fs.readFileSync('./botAvatar.txt', 'utf8');
+const youtube = require('discord-bot-youtube-notifications');
 
 //Logging channel
 const loggingChannelId = '1008978799989362808';
 
+const notificationChannelId = `1037117351868514396`;
 
+const youtubeIdFile = 'youtube.txt';
 
 // Create a new client instance
 const client = new Client({
@@ -22,6 +27,7 @@ const client = new Client({
 });
 
 
+
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
@@ -30,8 +36,27 @@ client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-const mikuBotVer = "MikuBot 0.2c";
-const botAvatarURL = "https://cdn.discordapp.com/avatars/1078530934766321744/65ae221617e928f3ff928e535885d66d.png?size=4096"
+
+// Youtube Notification Handeling
+const Notifier = new youtube.notifier(client, {
+	message: "**{author}** just published a new video!\n{url}"
+});
+
+// Adds notifier for each youtube ID in youtube.txt
+fs.readFile(youtubeIdFile, 'utf-8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+  const lines = data.trim().split('\n');
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].toString(); // Convert each line to a string
+    Notifier.addNotifier(line, notificationChannelId);
+    console.log(line);
+  }
+});
 
 
 for (const file of commandFiles) {
@@ -131,7 +156,7 @@ client.on('messageCreate', (message) => {
 		}
 
 
-		if (rxt(message, /\bass/i)) {
+		if (rxt(message, /ass\b/i)) {
 			nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
 		} else if (rxt(message, /brazil/i)) {
 			nPR(message, `<@276054611972849664> https://cdn.discordapp.com/attachments/1033012124311617577/1071113408281317416/image.png`);
