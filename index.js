@@ -65,7 +65,11 @@ function nPR(message, text) {
 }
 
 
-
+function errMsg(err) {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+	loggingChannel.send('MikuBot has had an error\n```' + err + '```');
+}
 
 
 // Event Triggers
@@ -77,7 +81,7 @@ client.on('messageCreate', (message) => {
 
 		const channelIdEmergancy = '1078537226226503750';
 	  	// Check if the message is in #emergency-meeting
-		
+
 		if (message.channel.id === channelIdEmergancy) {
 			if (rxt(message, /brogamer/i)) {
 
@@ -152,6 +156,7 @@ client.on('messageCreate', (message) => {
 		console.log("---- ERROR MESSAGEEVENT ----");
 		console.log(err);
 		console.log("---- ERROR MESSAGEEVENT ----");
+		errMsg(err);
 	}
 
 });
@@ -177,6 +182,7 @@ client.on('messageDelete', async (message) => {
 		console.log("---- ERROR MESSAGEDELETE ----");
 		console.log(err);
 		console.log("---- ERROR MESSAGEDELETE ----");
+		errMsg(err);
 	}
 });
 
@@ -215,6 +221,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 		console.log("---- ERROR MESSAGEUPDATE ----");
 		console.log(err);
 		console.log("---- ERROR MESSAGEUPDATE ----");
+		errMsg(err);
 	}
 });
 
@@ -240,6 +247,7 @@ client.on('guildMemberAdd', async (member) => {
 		console.log("---- ERROR GUILDMEMBERADD ----");
 		console.log(err);
 		console.log("---- ERROR GUILDMEMBERADD ----");
+		errMsg(err);
 	}
 });
 
@@ -264,6 +272,7 @@ client.on('guildMemberRemove', async (member) => {
 		console.log("---- ERROR GUILDMEMBERREMOVE ----");
 		console.log(err);
 		console.log("---- ERROR GUILDMEMBERREMOVE ----");
+		errMsg(err);
 	}
 });
 
@@ -300,6 +309,7 @@ client.on('guildBanAdd', async (guild, user) => {
 		console.log("---- ERROR GUILDMEMBERBAN ----");
 		console.log(err);
 		console.log("---- ERROR GUILDMEMBERBAN ----");
+		errMsg(err);
 	}
 });
 
@@ -325,6 +335,7 @@ client.on('guildBanRemove', async (guild, user) => {
 		console.log("---- ERROR GUILDMEMBERREBANREMOVE ----");
 		console.log(err);
 		console.log("---- ERROR GUILDMEMBERREBANREMOVE ----");
+		errMsg(err);
 	}	
 });
 
