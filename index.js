@@ -8,15 +8,15 @@ const loggingChannelId = '1008978799989362808';
 
 // Create a new client instance
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildModeration,
-        GatewayIntentBits.GuildPresences,
-        GatewayIntentBits.GuildMessageReactions,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.MessageContent,
-    ]
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildModeration,
+		GatewayIntentBits.GuildPresences,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.MessageContent,
+		]
 });
 
 
@@ -66,13 +66,26 @@ function nPR(message, text) {
 
 
 function errMsg(err) {
-	const loggingChannel = client.channels.fetch(loggingChannelId);
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
 	if (!loggingChannel) return;
 	loggingChannel.send('MikuBot has had an error\n```' + err + '```');
 }
 
 
 // Event Triggers
+client.once(Events.ClientReady, async client => {
+	console.log(`Ready! Logged in as ${client.user.tag}`);
+	client.user.setActivity('Eden Project');
+	const loggingChannelId = '1008978799989362808';
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+	const embed = {
+		color: parseInt('86cecb', 16),
+		description: `おはよう！ MikuBot is Ready!`,
+		timestamp: new Date()
+	};
+	loggingChannel.send({ embeds: [embed] });
+});
 
 client.on('messageCreate', (message) => {
 	try {
@@ -94,7 +107,7 @@ client.on('messageCreate', (message) => {
 			}
 		}
 
-		
+
 		if (rxt(message, /\bass/i)) {
 			nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
 		} else if (rxt(message, /brazil/i)) {
@@ -190,33 +203,33 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 	try {
 		if(oldMessage.author.bot) return;
 		if(oldMessage.content == newMessage.content) return;
-	  const loggingChannel = await client.channels.fetch(loggingChannelId);
-	  if (!loggingChannel) return;
+		const loggingChannel = await client.channels.fetch(loggingChannelId);
+		if (!loggingChannel) return;
 
-	  const embed = {
-	    color: parseInt("ffff00", 16),
-	    author: {
-	      name: oldMessage.author.tag,
-	      iconURL: oldMessage.author.avatarURL()
-	    },
-	    fields: [
-	      {
-	        name: 'Original Message',
-	        value: oldMessage.content
-	      },
-	      {
-	        name: 'Edited Message',
-	        value: newMessage.content
-	      },
-	      {
-	        name: 'Channel',
-	        value: oldMessage.channel.toString()
-	      }
-	    ],
-	    timestamp: new Date()
-	  };
+		const embed = {
+			color: parseInt("ffff00", 16),
+			author: {
+				name: oldMessage.author.tag,
+				iconURL: oldMessage.author.avatarURL()
+			},
+			fields: [
+			{
+				name: 'Original Message',
+				value: oldMessage.content
+			},
+			{
+				name: 'Edited Message',
+				value: newMessage.content
+			},
+			{
+				name: 'Channel',
+				value: oldMessage.channel.toString()
+			}
+			],
+			timestamp: new Date()
+		};
 
-	  loggingChannel.send({ embeds: [embed] });
+		loggingChannel.send({ embeds: [embed] });
 	} catch(err) {
 		console.log("---- ERROR MESSAGEUPDATE ----");
 		console.log(err);
