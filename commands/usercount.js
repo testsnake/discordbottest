@@ -6,7 +6,7 @@ module.exports = {
 		.setName('usercount')
 		.setDescription('Number of users in server'),
 	async execute(interaction) {
-		const guild = message.guild;
+		const guild = interaction.guild;
   		const memberCount = guild.memberCount;
 		const helpEmbed = new EmbedBuilder()
 			.setColor(0x86cecb)

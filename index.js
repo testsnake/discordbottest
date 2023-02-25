@@ -71,6 +71,19 @@ function errMsg(err) {
 	
 	console.log("unhandled error");
 	console.log(err);
+
+	const embed = {
+			color: parseInt('ff0000', 16),
+			author: {
+				name: user.tag,
+				iconURL: user.avatarURL()
+			},
+			description: `MikuBot has Encountered an Error\n${err}`,
+			timestamp: new Date()
+		};
+
+		client.channels.fetch(loggingChannelId).send({ embeds: [embed] });
+
 }
 
 
@@ -83,7 +96,7 @@ client.once("ready", async client => {
 	if (!loggingChannel) return;
 	const embed = {
 		color: parseInt('86cecb', 16),
-		description: `おはよう！ MikuBot 0.2a is Ready!`,
+		description: `おはよう！ MikuBot 0.2b is Ready!`,
 		timestamp: new Date()
 	};
 	loggingChannel.send({ embeds: [embed] });
