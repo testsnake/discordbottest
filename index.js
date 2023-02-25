@@ -77,6 +77,7 @@ client.on('messageCreate', (message) => {
 
 		const channelIdEmergancy = '1078537226226503750';
 	  	// Check if the message is in #emergency-meeting
+		
 		if (message.channel.id === channelIdEmergancy) {
 			if (rxt(message, /brogamer/i)) {
 
