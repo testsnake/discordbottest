@@ -6,6 +6,8 @@ const { token } = require('./config.json');
 //Logging channel
 const loggingChannelId = '1008978799989362808';
 
+
+
 // Create a new client instance
 const client = new Client({
 	intents: [
@@ -66,9 +68,9 @@ function nPR(message, text) {
 
 
 function errMsg(err) {
-	const loggingChannel = await client.channels.fetch(loggingChannelId);
-	if (!loggingChannel) return;
-	loggingChannel.send('MikuBot has had an error\n```' + err + '```');
+	
+	console.log("unhandled error");
+	console.log(err);
 }
 
 
@@ -351,10 +353,6 @@ client.on('guildBanRemove', async (guild, user) => {
 		errMsg(err);
 	}	
 });
-
-
-
-
 
 // Log in to Discord with your client's token
 client.login(token);
