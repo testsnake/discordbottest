@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
 const fs = require('fs');
-const { mikuBotVer, botAvatarURL } = require('./index.js');
 
 const filePathU = './text/Utility.txt';
 const textUtility = fs.readFileSync(filePathU, 'utf8');
@@ -27,8 +26,7 @@ module.exports = {
 				{ name: 'Fun', value: textFun},
 				{ name: 'Temp', value: textTemp}
 			)
-			.setTimestamp()
-			.setFooter({ text: mikuBotVer, iconURL: botAvatarURL});
+			.setTimestamp();
 		await interaction.reply({ embeds: [helpEmbed] });
 	},
 };

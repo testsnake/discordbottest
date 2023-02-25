@@ -31,7 +31,7 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 const mikuBotVer = "MikuBot 0.2c";
-const botAvatarURL = client.user.avatarURL();
+const botAvatarURL = "https://cdn.discordapp.com/avatars/1078530934766321744/65ae221617e928f3ff928e535885d66d.png?size=4096"
 
 
 for (const file of commandFiles) {
@@ -86,7 +86,7 @@ function errMsg(err) {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -213,7 +213,7 @@ client.on('messageDelete', async (message) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -256,7 +256,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -286,7 +286,7 @@ client.on('guildMemberAdd', async (member) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -315,7 +315,7 @@ client.on('guildMemberRemove', async (member) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -356,7 +356,7 @@ client.on('guildBanAdd', async (guild, user) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
@@ -386,7 +386,7 @@ client.on('guildBanRemove', async (guild, user) => {
 			timestamp: new Date(),
 			footer: {
 				text: mikuBotVer,
-				iconURL: client.user.avatarURL()
+				iconURL: botAvatarURL
 			}
 		};
 
