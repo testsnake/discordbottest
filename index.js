@@ -4,7 +4,7 @@ const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder, Discord } =
 const { token } = require('./config.json');  // Needs to be added for bot use
 const mikuBotVer = fs.readFileSync('./versionID.txt', 'utf8');
 const botAvatarURL = fs.readFileSync('./botAvatar.txt', 'utf8');
-const youtube = require('discord-bot-youtube-notifications');
+// const youtube = require('discord-bot-youtube-notifications');
 
 //Logging channel
 const loggingChannelId = '1008978799989362808';
@@ -37,26 +37,26 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 
-// Youtube Notification Handeling
-const Notifier = new youtube.notifier(client, {
-	message: "**{author}** just published a new video!\n{url}"
-});
+// // Youtube Notification Handeling
+// const Notifier = new youtube.notifier(client, {
+// 	message: "**{author}** just published a new video!\n{url}"
+// });
 
-// Adds notifier for each youtube ID in youtube.txt
-fs.readFile(youtubeIdFile, 'utf-8', (err, data) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
+// // Adds notifier for each youtube ID in youtube.txt
+// fs.readFile(youtubeIdFile, 'utf-8', (err, data) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
 
-  const lines = data.trim().split('\n');
+//   const lines = data.trim().split('\n');
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].toString(); // Convert each line to a string
-    Notifier.addNotifier(line, notificationChannelId);
-    console.log(line);
-  }
-});
+//   for (let i = 0; i < lines.length; i++) {
+//     const line = lines[i].toString(); // Convert each line to a string
+//     Notifier.addNotifier(line, notificationChannelId);
+//     console.log(line);
+//   }
+// });
 
 
 for (const file of commandFiles) {
