@@ -1,16 +1,24 @@
 const fs = require('fs');
 const path = require('path');
-const { Client, Collection, Events, GatewayIntentBits, Intents } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder, Discord } = require('discord.js');
 const { token } = require('./config.json');
 
+//Logging channel
+const loggingChannelId = '1008978799989362808';
+
 // Create a new client instance
-const client = new Client({ 
-	intents: [GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.MessageContent,
-		GatewayIntentBits.GuildMembers,
-		],
-	});
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildModeration,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.MessageContent,
+    ]
+});
+
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -53,7 +61,7 @@ function rxt(message, regExPattern) {
 // No Ping Reply
 function nPR(message, text) {
 	message.reply({content: text, allowedMentions: { repliedUser: false }})
-		.catch(console.error);
+	.catch(console.error);
 }
 
 
@@ -66,29 +74,29 @@ client.on('messageCreate', (message) => {
 	if(message.author.bot) return;
 	console.log("Received a message: " + message.content);
 
-	const regexPatternBG = /brogamer/i;
 	const channelIdEmergancy = '1078537226226503750';
   	// Check if the message is in #emergency-meeting
-  	if (message.channel.id === channelIdEmergancy) {
-  		if (regexPatternBG.test(message.content)) {
-  		
+	if (message.channel.id === channelIdEmergancy) {
+		if (rxt(message, /brogamer/i)) {
 
-            message.reply(`Go to <#1033012124311617577> pls.`)
-            	.then(msg => {
-            		setTimeout(() => msg.delete(), 5000)
-            	})
-            	.catch(console.error);
-	  	}
+
+			message.reply(`Go to <#1033012124311617577> pls.`)
+			.then(msg => {
+				setTimeout(() => msg.delete(), 5000)
+			})
+			.catch(console.error);
+		}
 	}
 
 	
-	if (rxt(message, /ass/i)) {
-		// Ass
+	if (rxt(message, /\bass/i)) {
 		nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
 	} else if (rxt(message, /brazil/i)) {
 		nPR(message, `<@276054611972849664> https://cdn.discordapp.com/attachments/1033012124311617577/1071113408281317416/image.png`);
 	} else if (rxt(message, /communism/i)) {
 		nPR(message, `https://images-ext-2.discordapp.net/external/qa4Sl-sOX5SfKTB_N5_RQIXeOFJYL14ZkIshPJqcEsY/https/media.tenor.com/YVq45h9PxJ4AAAPo/cat.mp4`);
+	} else if (rxt(message, /stop cum/i)) {
+		nPR(message, `https://ca.res.keymedia.com/files/image/ssfnwsdwdnjfno.jpg`);
 	} else if (rxt(message, /sexe/i) || rxt(message, /sperme/i)) {
 		nPR(message, ` https://cdn.discordapp.com/attachments/1008978799989362808/1075640066912833536/ezgif.com-add-text.gif`);
 	} else if (rxt(message, /cum/i) || rxt(message, /sex/i)) {
@@ -107,11 +115,174 @@ client.on('messageCreate', (message) => {
 		nPR(message, `https://tenor.com/view/cat-gif-25491298`);
 	} else if (rxt(message, /\bl r\b/i)) {
 		nPR(message, `https://i.redd.it/k8ve1kjctgw91.gif`);
+	} else if (rxt(message, /\bmao/i)) {
+		nPR(message, `https://tenor.com/view/mao-zedong-hello-chat-mao-gif-22461031`);
+	} else if (rxt(message, /my pussy/i)) {
+		nPR(message, `https://gfycat.com/PinkJubilantArgentinehornedfrog`);
+	} else if (rxt(message, /outdated macros/i)) {
+		nPR(message, `https://cdn.discordapp.com/attachments/603835223691624451/1069887396667211796/79e3sy.gif`);
+	} else if (rxt(message, /pdm2 drama/i)) {
+		nPR(message, `https://tenor.com/view/discord-discord-drama-discord-user-drama-discord-users-gif-24707797`);
+	} else if (rxt(message, /poggers/i)) {
+		nPR(message, `https://tenor.com/view/lesbian-yuri-kiss-anime-gif-23631557`);
+	} else if (rxt(message, /politic/i)) {
+		nPR(message, `https://cdn.discordapp.com/attachments/1008978799989362808/1075928778032808017/image.png`);
+	} else if (rxt(message, /rule 10/i)) {
+		nPR(message, `**RULE 10**\nIf its any time of day don't listen to <@418087601841635338> they can't be trusted`);
+	} else if (rxt(message, /rule 34/i)) {
+		nPR(message, `https://cdn.discordapp.com/attachments/1009649075227984062/1075903061429604442/image.png`); 
+	} else if (rxt(message, /rule 39/i)) {
+		nPR(message, `https://psychicpostpirate.files.wordpress.com/2016/05/laws_of_anime__39_by_catsvrsdogscatswin-d79n81y.jpg?w=469`);
+	} else if (rxt(message, /rule 419/i)) {
+		nPR(message, `https://cdn.discordapp.com/attachments/1008978799989362808/1075931020144164954/image.png`);
+	} else if (rxt(message, /rule 420/i)) {
+		nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
+	} else if (rxt(message, /snoozle/i)) {
+		nPR(message, `https://cdn2.hubspot.net/hubfs/1641088/Snozzle%20Piercing%20Nozzle.jpg`);
+	} else if (rxt(message, /weed/i) || rxt(message, /zaza/i)) {
+		nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
+	} else if (rxt(message, /whos there/i) || rxt(message, /who's there/i)) {
+		nPR(message, `https://gfycat.com/PinkJubilantArgentinehornedfrog`);
+	} else if (rxt(message, /中国/)) {
+		nPR(message, `https://tenor.com/view/chinese-china-zhonguo-gif-20748132`);
 	}
 
 
 });
 
+// Log deleted messages
+client.on('messageDelete', async (message) => {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+
+	const embed = {
+		color: parseInt('ff0000', 16),
+		author: {
+			name: message.author.tag,
+			iconURL: message.author.avatarURL()
+		},
+		description: `**Message deleted in ${message.channel}**\nID: ${message.id}\n${message.content}`,
+		timestamp: new Date()
+	};
+
+	loggingChannel.send({ embeds: [embed] });
+});
+
+client.on('messageUpdate', async (oldMessage, newMessage) => {
+  const loggingChannel = await client.channels.fetch(loggingChannelId);
+  if (!loggingChannel) return;
+
+  const embed = {
+    color: parseInt("ffff00", 16),
+    author: {
+      name: oldMessage.author.tag,
+      iconURL: oldMessage.author.avatarURL()
+    },
+    fields: [
+      {
+        name: 'Original Message',
+        value: oldMessage.content
+      },
+      {
+        name: 'Edited Message',
+        value: newMessage.content
+      },
+      {
+        name: 'Channel',
+        value: oldMessage.channel.toString()
+      }
+    ],
+    timestamp: new Date()
+  };
+
+  loggingChannel.send({ embeds: [embed] });
+});
+
+
+// Log user joins
+client.on('guildMemberAdd', async (member) => {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+
+	const embed = {
+		color: parseInt('00ff00', 16),
+		author: {
+			name: member.user.tag,
+			iconURL: member.user.avatarURL()
+		},
+		description: `**${member.user.tag} has joined the server!**\nUsers in server: ${member.guild.memberCount}`,
+		timestamp: new Date()
+	};
+
+	loggingChannel.send({ embeds: [embed] });
+});
+
+// Log user leaves
+client.on('guildMemberRemove', async (member) => {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+
+	const embed = {
+		color: parseInt('ff0000', 16),
+		author: {
+			name: member.user.tag,
+			iconURL: member.user.avatarURL()
+		},
+		description: `**${member.user.tag} has left the server.**\nRoles: ${member.roles.cache.map(role => role.name).join(', ')}`,
+		timestamp: new Date()
+	};
+
+	loggingChannel.send({ embeds: [embed] });
+});
+
+// Log user bans
+client.on('guildBanAdd', async (guild, user) => {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+
+	const auditLogs = await guild.fetchAuditLogs({ type: 'MEMBER_BAN_ADD' });
+	const logEntry = auditLogs.entries.first();
+
+	let reason = 'unknown';
+	if (logEntry) {
+		const { executor, reason: banReason } = logEntry;
+		if (executor) {
+			reason = banReason || 'unknown';
+			reason += `\nBanned by: ${executor.tag}`;
+		}
+	}
+
+	const embed = {
+		color: parseInt('ff0000', 16),
+		author: {
+			name: user.tag,
+			iconURL: user.avatarURL()
+		},
+		description: `**${user.tag} has been banned from the server.**\nReason: ${reason}`,
+		timestamp: new Date()
+	};
+
+	loggingChannel.send({ embeds: [embed] });
+});
+
+
+// Log user unbans
+client.on('guildBanRemove', async (guild, user) => {
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
+
+	const embed = {
+		color: parseInt('00ff00', 16),
+		author: {
+			name: user.tag,
+			iconURL: user.avatarURL()
+		},
+		description: `**${user.tag} has been unbanned from the server.**`,
+		timestamp: new Date()
+	};
+
+	loggingChannel.send({ embeds: [embed] });
+});
 
 
 
