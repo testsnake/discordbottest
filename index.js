@@ -66,7 +66,7 @@ function nPR(message, text) {
 
 
 function errMsg(err) {
-	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	const loggingChannel = client.channels.fetch(loggingChannelId);
 	if (!loggingChannel) return;
 	loggingChannel.send('MikuBot has had an error\n```' + err + '```');
 }

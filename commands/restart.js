@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { exec } = require('child_process');
-const { errMsg } = require('./index');
+
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,7 +11,10 @@ module.exports = {
       exec('sudo reboot', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
-          errMsg(interaction.channel + `\nFailed to restart the MikuBot. Please try again later.`);
+          const loggingChannelId = '1008978799989362808';
+          const loggingChannel = client.channels.fetch(loggingChannelId);
+          if (!loggingChannel) return;
+          loggingChannel.send('MikuBot has had an error\n```' + err + '```');
           return;
         }
         console.log(`stdout: ${stdout}`);
