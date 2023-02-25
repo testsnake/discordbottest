@@ -145,7 +145,7 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
 		} else if (rxt(message, /snoozle/i)) {
 			nPR(message, `https://cdn2.hubspot.net/hubfs/1641088/Snozzle%20Piercing%20Nozzle.jpg`);
-		} else if (rxt(message, /weed/i) || rxt(message, /zaza/i)) {
+		} else if (rxt(message, /\bweed/i) || rxt(message, /zaza/i)) {
 			nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
 		} else if (rxt(message, /whos there/i) || rxt(message, /who's there/i)) {
 			nPR(message, `https://gfycat.com/PinkJubilantArgentinehornedfrog`);
