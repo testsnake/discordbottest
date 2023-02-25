@@ -81,7 +81,7 @@ client.once(Events.ClientReady, async client => {
 	if (!loggingChannel) return;
 	const embed = {
 		color: parseInt('86cecb', 16),
-		description: `おはよう！ MikuBot is Ready!`,
+		description: `おはよう！ MikuBot 0.2 is Ready!`,
 		timestamp: new Date()
 	};
 	loggingChannel.send({ embeds: [embed] });
