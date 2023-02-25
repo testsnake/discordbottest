@@ -30,6 +30,10 @@ client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
+const mikuBotVer = "MikuBot 0.2c";
+const botAvatarURL = client.user.avatarURL();
+
+
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
 	const command = require(filePath);
@@ -79,7 +83,11 @@ function errMsg(err) {
 				iconURL: user.avatarURL()
 			},
 			description: `MikuBot has Encountered an Error\n${err}`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		client.channels.fetch(loggingChannelId).send({ embeds: [embed] });
@@ -96,7 +104,7 @@ client.once("ready", async client => {
 	if (!loggingChannel) return;
 	const embed = {
 		color: parseInt('86cecb', 16),
-		description: `おはよう！ MikuBot 0.2b is Ready!`,
+		description: `おはよう！ ${mikuBotVer} is Ready!`,
 		timestamp: new Date()
 	};
 	loggingChannel.send({ embeds: [embed] });
@@ -202,7 +210,11 @@ client.on('messageDelete', async (message) => {
 				iconURL: message.author.avatarURL()
 			},
 			description: `**Message deleted in ${message.channel}**\nID: ${message.id}\n${message.content}`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -241,7 +253,11 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 				value: oldMessage.channel.toString()
 			}
 			],
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -267,7 +283,11 @@ client.on('guildMemberAdd', async (member) => {
 				iconURL: member.user.avatarURL()
 			},
 			description: `**${member.user.tag} has joined the server!**\nUsers in server: ${member.guild.memberCount}`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -292,7 +312,11 @@ client.on('guildMemberRemove', async (member) => {
 				iconURL: member.user.avatarURL()
 			},
 			description: `**${member.user.tag} has left the server.**\nRoles: ${member.roles.cache.map(role => role.name).join(', ')}`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -329,7 +353,11 @@ client.on('guildBanAdd', async (guild, user) => {
 				iconURL: user.avatarURL()
 			},
 			description: `**${user.tag} has been banned from the server.**\nReason: ${reason}`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -355,7 +383,11 @@ client.on('guildBanRemove', async (guild, user) => {
 				iconURL: user.avatarURL()
 			},
 			description: `**${user.tag} has been unbanned from the server.**`,
-			timestamp: new Date()
+			timestamp: new Date(),
+			footer: {
+				text: mikuBotVer,
+				iconURL: client.user.avatarURL()
+			}
 		};
 
 		loggingChannel.send({ embeds: [embed] });
@@ -369,3 +401,4 @@ client.on('guildBanRemove', async (guild, user) => {
 
 // Log in to Discord with your client's token
 client.login(token);
+module.exports = { mikuBotVer, client, botAvatarURL};
