@@ -20,6 +20,7 @@ module.exports = {
 				{ name: 'How', value: 'I dunno'}
 			)
 			.setFooter({ text: `${mikuBotVer}`})
+			.setTimestamp();
 
 		await interaction.reply({ embeds: [helpEmbed] });
 	},
