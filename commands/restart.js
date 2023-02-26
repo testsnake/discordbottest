@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('Restarts MikuBot'),
   async execute(interaction) {
     if (interaction.member.permissions.has('ADMINISTRATOR')) {
-      exec('sudo git pull https://github.com/testsnake/discordbottest ; sudo reboot', (error, stdout, stderr) => {
+      exec('sudo git stash ; sudo git pull https://github.com/testsnake/discordbottest ; sudo reboot', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
           const loggingChannelId = '1008978799989362808';
