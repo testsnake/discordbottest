@@ -10,7 +10,7 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		const text = interaction.options.getString('text');
-		const clapText = str.replace(/ /g, ' 👏 ')
+		const clapText = text.replace(/ /g, ' 👏 ')
 		await interaction.reply({ content: clapText, allowedMentions: { repliedUser: false  }});
 	},
 };
