@@ -157,7 +157,7 @@ client.on('messageCreate', (message) => {
 		}
 
 
-		if (rxt(message, /ass\b/i)) {
+		if (rxt(message, /ass/i)) {
 			nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
 		} else if (rxt(message, /brazil/i)) {
 			message.reply(`<@276054611972849664> https://cdn.discordapp.com/attachments/1033012124311617577/1071113408281317416/image.png`);
@@ -211,7 +211,7 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
 		} else if (rxt(message, /snoozle/i)) {
 			nPR(message, `https://cdn2.hubspot.net/hubfs/1641088/Snozzle%20Piercing%20Nozzle.jpg`);
-		} else if (rxt(message, /\bweed/i) || rxt(message, /zaza/i)) {
+		} else if (rxt(message, /\bweed\b/i) || rxt(message, /zaza/i)) {
 			nPR(message, `https://media.discordapp.net/attachments/1023036018015871037/1070150951639466014/ZAZA_DETECTED.gif`);
 		} else if (rxt(message, /whos there/i) || rxt(message, /who's there/i)) {
 			nPR(message, `https://gfycat.com/PinkJubilantArgentinehornedfrog`);
