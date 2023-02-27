@@ -1,1 +1,1 @@
-MikuBot 0.2d
+MikuBot 0.2e
