@@ -6,7 +6,7 @@ module.exports = {
 		.setDescription('Adds 👏 Clap 👏 Emoji 👏 in 👏 between 👏 each 👏 word.')
 		.addStringOption(option => 
 			option.setName('text')
-				.setDescription('The text you want to uwu-ify.')
+				.setDescription('The text you want to add claps to.')
 				.setRequired(true)),
 	async execute(interaction) {
 		const text = interaction.options.getString('text');
