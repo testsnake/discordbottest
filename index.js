@@ -141,7 +141,7 @@ client.on('messageCreate', (message) => {
 		if(message.author.bot) return;
 		console.log("Received a message: " + message.content);
 
-		const channelIdEmergancy = '1078537226226503750';
+		const channelIdEmergancy = '1008921373000863754';
 	  	// Check if the message is in #emergency-meeting
 
 		if (message.channel.id === channelIdEmergancy) {
