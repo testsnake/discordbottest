@@ -12,7 +12,6 @@ module.exports = {
         if (error) {
           console.error(`exec error: ${error}`);
           const loggingChannelId = '1008978799989362808';
-          if (!loggingChannel) return;
           client.channels.fetch(loggingChannelId).send('MikuBot has had an error\n```' + err + '```');
           return;
         }
