@@ -1,10 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder, Discord } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, SlashCommandBuilder, EmbedBuilder, Discord } = require('discord.js');
 const { token } = require('./config.json');  // Needs to be added for bot use
 const mikuBotVer = fs.readFileSync('./versionID.txt', 'utf8');
 const botAvatarURL = fs.readFileSync('./botAvatar.txt', 'utf8');
 // const youtube = require('discord-bot-youtube-notifications');
+
 
 //Logging channel
 const loggingChannelId = '1008978799989362808';
