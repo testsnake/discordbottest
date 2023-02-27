@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('Restarts MikuBot'),
   async execute(interaction) {
     if (interaction.member.permissions.has('ADMINISTRATOR')) {
-      exec('cd /home/testsnake/github/discordbottest ; sudo ./reboot.sh', (error, stdout, stderr) => {
+      exec('sudo ./home/testsnake/github/discordbottest/reboot.sh', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
           const loggingChannelId = '1008978799989362808';
@@ -19,7 +19,7 @@ module.exports = {
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
       });
-      await interaction.reply('Restarting the MikuBot...');
+      await interaction.reply('Restarting MikuBot...');
     } else {
       await interaction.reply({
         content: 'You do not have permission to use this command.',
