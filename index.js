@@ -157,7 +157,7 @@ client.on('messageCreate', (message) => {
 		}
 
 
-		if (rxt(message, /ass/i)) {
+		if (rxt(message, /\bass\b/i)) {
 			nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
 		} else if (rxt(message, /brazil/i)) {
 			message.reply(`<@276054611972849664> https://cdn.discordapp.com/attachments/1033012124311617577/1071113408281317416/image.png`);
