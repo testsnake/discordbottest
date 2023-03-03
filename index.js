@@ -181,8 +181,6 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://i.kym-cdn.com/entries/icons/original/000/034/680/EWrC68tXkAE8ouz.jpeg `);
 		} else if (rxt(message, /horse/i)) {
 			nPR(message, `https://tenor.com/view/you-have-alerted-the-horse-horse-gt-when-the-gif-24722142`);
-		} else if (rxt(message, /hp/i)) {
-			nPR(message, `https://cdn.discordapp.com/attachments/1033012124311617577/1072738423787491408/image0.gif`);
 		} else if (rxt(message, /in eden when/i)) {
 			nPR(message, `https://tenor.com/view/cat-gif-25491298`);
 		} else if (rxt(message, /\bl r\b/i)) {
