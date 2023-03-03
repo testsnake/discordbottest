@@ -199,9 +199,7 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://tenor.com/view/lesbian-yuri-kiss-anime-gif-23631557`);
 		} else if (rxt(message, /politic/i)) {
 			nPR(message, `https://cdn.discordapp.com/attachments/1008978799989362808/1075928778032808017/image.png`);
-		} else if (rxt(message, /rule 10/i)) {
-			nPR(message, `**RULE 10**\nIf its any time of day don't listen to <@418087601841635338> they can't be trusted`);
-		} else if (rxt(message, /rule 34/i)) {
+		}  else if (rxt(message, /rule 34/i)) {
 			nPR(message, `https://cdn.discordapp.com/attachments/1009649075227984062/1075903061429604442/image.png`); 
 		} else if (rxt(message, /rule 39/i)) {
 			nPR(message, `https://psychicpostpirate.files.wordpress.com/2016/05/laws_of_anime__39_by_catsvrsdogscatswin-d79n81y.jpg?w=469`);
