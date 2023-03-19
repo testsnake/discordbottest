@@ -35,11 +35,7 @@ module.exports = {
         // console.log("test")
         // console.log(aat);
 
-        const searchRes = await fetch(`https://gamebanana.com/apiv8/Util/Game/Submissions?_idGameRow=16522&_nPage=1&_sName=${query}`, {
-            headers: {
-                Authorization: /*`Token ${authenticateRes[0]}`*/`none`,
-            },
-        }).then(res => res.json());
+        const results = await fetch(`https://gamebanana.com/apiv10/Game/16522/Subfeed?_nPage=1&_nPerpage=10&_sSort=default&_sName=${query}`).then(res => res.json());
 
         //console.log(searchRes);
         // if (!searchRes.success) {
@@ -47,44 +43,62 @@ module.exports = {
         // }
 
 
-        const results = searchRes.slice(0, 9);
+
 
         var embeds = [];
 
-        results.forEach(mod => {
-            if (!mod._bIsNsfw) {
-                embeds.push(new EmbedBuilder()
-                    .setColor(0x86cecb)
-                    .setAuthor({name: "GameBanana Search", iconURL: `${mod._aRootCategory._sIconUrl}`})
-                    .setTitle(`${mod._sName}`)
-                    .setURL(`https://gamebanana.com/mods/${mod._idRow}`)
-                    .setThumbnail(`${mod._aPreviewMedia._aImages[0]._sBaseUrl}/${mod._aPreviewMedia._aImages[0]._sFile}`)
-                    .setTimestamp(new Date(mod._tsDateAdded * 1000))
-                    .setFields(
-                        {name: 'Submitter', value: `${mod._aSubmitter._sName}`, inline: true},
-                        {name: 'Likes', value: `${mod._nLikeCount !== undefined ? mod._nLikeCount : 0}`, inline: true},
-                        {name: 'Views', value: `${mod._nViewCount !== undefined ? mod._nViewCount : 0}`, inline: true},
-                    )
+        for (const mod of results._aRecords) {
+            const modInfo = await fetch(`https://gamebanana.com/apiv10/Mod/${mod._idRow}/ProfilePage`).then(res => res.json());
+            const embed = new EmbedBuilder()
+                .setColor(0x86cecb)
+                .setAuthor({name: "GameBanana Search", iconURL: `${modInfo._aCategory._sIconUrl}`})
+                .setTitle(`${modInfo._sName}`)
+                .setURL(`${modInfo._sProfileUrl}`)
+                .setThumbnail(`${modInfo._aPreviewMedia._aImages[0]._sBaseUrl}/${modInfo._aPreviewMedia._aImages[0]._sFile}`)
+                .setTimestamp(new Date(modInfo._tsDateAdded * 1000))
+                .addFields(
+                    {name: 'Submitter', value: `${modInfo._aSubmitter._sName}`, inline: true},
+                    {
+                        name: 'Likes',
+                        value: `${modInfo._nLikeCount !== undefined ? modInfo._nLikeCount : 0}`,
+                        inline: true
+                    },
+                    {
+                        name: 'Views',
+                        value: `${modInfo._nViewCount !== undefined ? modInfo._nViewCount : 0}`,
+                        inline: true
+                    },
                 )
-            } else {
-                embeds.push(new EmbedBuilder()
-                    .setColor(0x86cecb)
-                    .setAuthor({name: "GameBanana Search", iconURL: `${mod._aRootCategory._sIconUrl}`})
-                    .setTitle(`${mod._sName}`)
-                    .setURL(`https://gamebanana.com/mods/${mod._idRow}`)
-                    .setTimestamp(new Date(mod._tsDateAdded * 1000))
-                    .setDescription("*This mod has content warnings.*")
-                    .setThumbnail(`${mod._aPreviewMedia._aImages[0]._sBaseUrl}/${mod._aPreviewMedia._aImages[0]._sFile}`)
-                    .setFooter({ text: `${mikuBotVer}`})
-                    .setFields(
-                        {name: 'Submitter', value: `${mod._aSubmitter._sName}`, inline: true},
-                        {name: 'Likes', value: `${mod._nLikeCount !== undefined ? mod._nLikeCount : 0}`, inline: true},
-                        {name: 'Views', value: `${mod._nViewCount !== undefined ? mod._nViewCount : 0}`, inline: true},
-                    )
-
-                )
+                .setFooter({text: `${mikuBotVer}`})
+            if (modInfo._sDescription !== undefined) {
+                embed.setDescription(`${modInfo._sDescription}`);
             }
-        });
+            if (modInfo._aAdditionalInfo._sversion !== undefined) {
+                embed.addFields({name: 'Version', value: `${modInfo._aAdditionalInfo._sversion}`, inline: true});
+            }
+            var contentWarnings;
+            if (modInfo._aContentRatings !== undefined) {
+                for (var rating in modInfo._aContentRatings) {
+                    if (modInfo._aContentRatings[rating] !== undefined) {
+                        console.log(modInfo._aContentRatings[rating]);
+                        if (contentWarnings === undefined) {
+                            contentWarnings = `${modInfo._aContentRatings[rating]}`;
+                        } else {
+                            contentWarnings = `${contentWarnings}, ${modInfo._aContentRatings[rating]}`;
+                        }
+                    }
+                }
+                console.log(contentWarnings);
+                console.log(modInfo._aContentRatings);
+
+                embed.addFields({name: 'Content Warnings', value: `${contentWarnings}`, inline: true});
+            }
+
+
+            embeds.push(embed);
+
+
+        }
 
         if (embeds.length === 0) {
             embeds.push(new EmbedBuilder()
