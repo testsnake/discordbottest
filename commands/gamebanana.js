@@ -46,8 +46,12 @@ module.exports = {
 
 
         var embeds = [];
-
+        i = 0;
         for (const mod of results._aRecords) {
+            i++;
+            if (i >= 10) {
+                break;
+            }
             const modInfo = await fetch(`https://gamebanana.com/apiv10/Mod/${mod._idRow}/ProfilePage`).then(res => res.json());
             const embed = new EmbedBuilder()
                 .setColor(0x86cecb)
@@ -77,8 +81,10 @@ module.exports = {
                 embed.addFields({name: 'Version', value: `${modInfo._aAdditionalInfo._sversion}`, inline: true});
             }
             var contentWarnings;
+
             if (modInfo._aContentRatings !== undefined) {
                 for (var rating in modInfo._aContentRatings) {
+
                     if (modInfo._aContentRatings[rating] !== undefined) {
                         console.log(modInfo._aContentRatings[rating]);
                         if (contentWarnings === undefined) {
@@ -108,6 +114,7 @@ module.exports = {
                 .setFooter({ text: `${mikuBotVer}`})
             )
         }
+
         await interaction.reply({ embeds: embeds });
 
         // if (results.length === 0) {
