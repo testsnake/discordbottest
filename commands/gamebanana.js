@@ -82,6 +82,13 @@ module.exports = {
             }
         });
 
+        if (embeds.length === 0) {
+            embeds.push(new EmbedBuilder()
+                .setColor(0x86cecb)
+                .setAuthor({name: "GameBanana Search", iconURL: "https://images.gamebanana.com/static/img/mascots/detective.png"})
+                .setTitle("No results found.")
+            )
+        }
         await interaction.reply({ embeds: embeds });
 
         // if (results.length === 0) {

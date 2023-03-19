@@ -173,6 +173,8 @@ client.on('messageCreate', (message) => {
 			} else {
 				nPR(message, `https://tenor.com/view/my-true-reaction-cat-funny-gif-26404518`);
 			}
+		} else if (rxt(message, /le honse/i)) {
+			nPR(message, `https://media.discordapp.net/attachments/978812918961414165/1078417273129279569/F9FBEC35-01B6-4E77-8CC9-D78B45B58FF1.gif`);
 		} else if (rxt(message, /honse/i)) {
 			nPR(message, `https://i.kym-cdn.com/entries/icons/original/000/034/680/EWrC68tXkAE8ouz.jpeg `);
 		} else if (rxt(message, /horse/i)) {
