@@ -68,25 +68,26 @@ module.exports = {
                 )
             } else {
                 embeds.push(new EmbedBuilder()
-                    .setColor(0xcc9f9d)
+                    .setColor(0x86cecb)
                     .setAuthor({name: "GameBanana Search", iconURL: `${mod._aRootCategory._sIconUrl}`})
                     .setTitle(`${mod._sName}`)
                     .setURL(`https://gamebanana.com/mods/${mod._idRow}`)
                     .setTimestamp(new Date(mod._tsDateAdded * 1000))
-                    .setDescription("This mod is marked as NSFW.\nPlease use caution when viewing it.")
+                    .setDescription("*This mod is marked as NSFW.*")
+                    .setFooter({ text: `${mikuBotVer}`})
                     .setFields(
                         {name: 'Submitter', value: `${mod._aSubmitter._sName}`, inline: true},
                         {name: 'Likes', value: `${mod._nLikeCount !== undefined ? mod._nLikeCount : 0}`, inline: true},
                         {name: 'Views', value: `${mod._nViewCount !== undefined ? mod._nViewCount : 0}`, inline: true},
                     )
-                    .setFooter({ text: `${mikuBotVer}`})
+
                 )
             }
         });
 
         if (embeds.length === 0) {
             embeds.push(new EmbedBuilder()
-                .setColor(0x86cecb)
+                .setColor(0xffc526)
                 .setAuthor({name: "GameBanana Search", iconURL: "https://images.gamebanana.com/static/img/mascots/detective.png"})
                 .setTitle("No results found.")
                 .setFooter({ text: `${mikuBotVer}`})
