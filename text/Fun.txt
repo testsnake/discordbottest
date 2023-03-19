@@ -1,4 +1,7 @@
+/clap - Adds 👏 Clap 👏 Emoji 👏 in 👏 between 👏 each 👏 word
 /hd -  Hot Dog
 /hb - Holy Beans
 /hf - Hit Fan
 /hfr - Hate France
+/uwu - uwuifies your message
+/youaregoingtobrazil - Sends the user to brazil

@@ -1,12 +1,15 @@
+/avatar - Grabs specified user's avatar
 /backup - tutorial on how to backup your save
-/chart - Comfy
+/chart - Comfy manual
 /compatibility - compatibility documentation
 /download - download Eden Project
 /drive - drive over download fix
 /dml - Diva Mod Loader Link
 /install - mod install guide
 /expatch - Links expatch
+/gamebanana - Searches GameBanana for the specified mod
 /lite - Lite version info and comparision
 /module - List of Eden Project Modules
 /song - List of Eden Project Songs
+/usercount - Shows the current user count
 /upgrade /downgrade - Upgrade/downgrade guide for mm+

@@ -167,16 +167,12 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://ca.res.keymedia.com/files/image/ssfnwsdwdnjfno.jpg`);
 		} else if (rxt(message, /sexe/i) || rxt(message, /sperme/i)) {
 			nPR(message, ` https://cdn.discordapp.com/attachments/1008978799989362808/1075640066912833536/ezgif.com-add-text.gif`);
-		} else if (rxt(message, /cum/i) || rxt(message, /sex/i)) {
-			if (Math.floor(Math.random() * 100 == 1)) {
+		} else if ((rxt(message, /cum/i) || rxt(message, /sex/i)) && !rxt(message, /document/i)) {
+			if (Math.floor(Math.random() * 101) === 1) {
 				nPR(message, `In the videogame Skyrim, I create mods that spawn cheese, kill Fondle, and slaughter zombies with a potato. I also replace the statue of a woman holding a statue of a sword with a weeping man holding a statue of a sword that isn't an actual sword. And then I buy the woman a copy of Limbo.\n\nI'm a god.\n\nI call myself Diablo the Cheater. As far as I know, I'm the only person who writes a list of cheating cheats and uses it in-game. My mod turned the game into an interdimensional sex simulator (powered by a fucking necromancer), and I use that game on a daily basis. To date, I've cheated in thirty games. Twenty-one of them were developed by other users, and the other two were made by me.\n\nAnd today, this motherfucker is named after me.\n\nI use a relatively simple cheat to game console games. What I do is turn the switch on the controller I use into a button on the console, and then I press it to trigger cheats that give me a better experience. Here's what those che`);
 			} else {
 				nPR(message, `https://tenor.com/view/my-true-reaction-cat-funny-gif-26404518`);
 			}
-		} else if (rxt(message, /deez nuts/i)) {
-			nPR(message, ` https://tenor.com/view/non-fa-niente-ritill-e-vabb%C3%A8-gif-26307508 `);
-		} else if (rxt(message, /dragon/i)) {
-			nPR(message, `https://tenor.com/view/dragon-tale-dragon-covered-fell-down-here-gif-5524123`);
 		} else if (rxt(message, /honse/i)) {
 			nPR(message, `https://i.kym-cdn.com/entries/icons/original/000/034/680/EWrC68tXkAE8ouz.jpeg `);
 		} else if (rxt(message, /horse/i)) {
