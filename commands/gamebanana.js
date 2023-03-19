@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const mikuBotVer = fs.readFileSync('./versionID.txt', 'utf8');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -78,6 +79,7 @@ module.exports = {
                         {name: 'Likes', value: `${mod._nLikeCount !== undefined ? mod._nLikeCount : 0}`, inline: true},
                         {name: 'Views', value: `${mod._nViewCount !== undefined ? mod._nViewCount : 0}`, inline: true},
                     )
+                    .setFooter({ text: `${mikuBotVer}`})
                 )
             }
         });
@@ -87,6 +89,7 @@ module.exports = {
                 .setColor(0x86cecb)
                 .setAuthor({name: "GameBanana Search", iconURL: "https://images.gamebanana.com/static/img/mascots/detective.png"})
                 .setTitle("No results found.")
+                .setFooter({ text: `${mikuBotVer}`})
             )
         }
         await interaction.reply({ embeds: embeds });
