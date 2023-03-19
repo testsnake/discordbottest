@@ -73,7 +73,8 @@ module.exports = {
                     .setTitle(`${mod._sName}`)
                     .setURL(`https://gamebanana.com/mods/${mod._idRow}`)
                     .setTimestamp(new Date(mod._tsDateAdded * 1000))
-                    .setDescription("*This mod is marked as NSFW.*")
+                    .setDescription("*This mod has content warnings.*")
+                    .setThumbnail(`${mod._aPreviewMedia._aImages[0]._sBaseUrl}/${mod._aPreviewMedia._aImages[0]._sFile}`)
                     .setFooter({ text: `${mikuBotVer}`})
                     .setFields(
                         {name: 'Submitter', value: `${mod._aSubmitter._sName}`, inline: true},
