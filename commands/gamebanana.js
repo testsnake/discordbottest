@@ -103,10 +103,10 @@ module.exports = {
 
 
             embeds.push(embed);
-            // Runs every 2 iterations to save bandwidth
-            if (i % 2 === 0) {
-                await interaction.editReply({ embeds: embeds });
-            }
+            await interaction.editReply({ content: `Found ${i} results...`});
+
+
+
 
         }
 
