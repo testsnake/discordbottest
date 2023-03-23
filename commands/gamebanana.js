@@ -119,7 +119,7 @@ module.exports = {
             )
         }
 
-        await interaction.editReply({ embeds: embeds });
+        await interaction.editReply({ embeds: embeds, content: `` });
 
         // if (results.length === 0) {
         //     resultEmbed.setDescription('No results found.');
