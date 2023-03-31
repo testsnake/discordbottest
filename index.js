@@ -107,6 +107,7 @@ async function errMsg(err) {
 		console.log("logging channel not found");
 		return;
 	}
+	console.log("logging channel found");
 
 	const embed = {
 			color: parseInt('ff0000', 16),
