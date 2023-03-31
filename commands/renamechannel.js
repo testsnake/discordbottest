@@ -26,7 +26,6 @@ module.exports = {
         const newChannelName = interaction.options.getString('newname');
         const guild = interaction.guild;
         const targetChannelId = '1009649075227984062';
-        const brazilChannelId = '1084358094139699270';
 
         // Check if the command is being executed in the target channel
         if (interaction.channelId !== targetChannelId) {
@@ -72,12 +71,11 @@ module.exports = {
                 await new Promise(resolve => setTimeout(resolve, 3000));
                 await interaction.editReply(`${user.toString()} has been sent to Brazil!`);
 
-                // Send a message to the Brazil channel
-                const brazilChannel = await guild.channels.cache.get(brazilChannelId);
-                await brazilChannel.send(`🚨 ${user.toString()} has just been sent to Brazil! 😱`);
+                
 
                 // Retrieve the user from Brazil after a variable duration
                 const retrievalDelay = getRandomRetrievalDelay();
+                console.log(retrievalDelay);
                 // const retrievalUnixTime = Math.floor(Date.now() / 1000) + Math.floor(retrievalDelay / 1000);
                 // Update the message to show the estimated retrieval time
                 await interaction.editReply(`${user.toString()} has been sent to Brazil!`);
@@ -89,8 +87,7 @@ module.exports = {
                     }
                     await interaction.channel.send(`${user.toString()} has been retrieved from Brazil!`);
 
-                    // Send a message to the Brazil channel
-                    await brazilChannel.send(`🎉 ${user.toString()} has miraculously escaped Brazil! 🥳`);
+                    
                 }, retrievalDelay);
 
 
