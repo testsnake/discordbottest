@@ -161,7 +161,7 @@ client.on('messageCreate', (message) => {
 
 		//memes
 		const roleId = '1091208299111776318';
-		const hasRole = user.roles.cache.has(roleId);
+		const hasRole = message.author.roles.cache.has(roleId);
 
 		if (hasRole) {
 			console.log("User has Ignore role");
