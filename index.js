@@ -122,7 +122,7 @@ async function errMsg(err) {
 				iconURL: botAvatarURL
 			}
 		};
-
+	console.log("error message created")
 	loggingChannel.send({ embeds: [embed] });
 	console.log("error message sent");
 
