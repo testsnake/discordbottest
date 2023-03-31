@@ -113,14 +113,8 @@ async function errMsg(err) {
 			color: parseInt('ff0000', 16),
 			author: {
 				name: user.tag,
-				iconURL: user.avatarURL()
 			},
 			description: `MikuBot has Encountered an Error\n${err}`,
-			timestamp: new Date(),
-			footer: {
-				text: mikuBotVer,
-				iconURL: botAvatarURL
-			}
 		};
 	console.log("error message created")
 	loggingChannel.send({ embeds: [embed] });
