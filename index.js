@@ -156,11 +156,13 @@ client.on('messageCreate', async (message) => {
 
 		//memes
 		const roleId = '1091208299111776318';
-		const hasRole = await message.author.roles.cache.has(roleId);
+		if (message.member) {
+			const hasRole = await message.member.roles.cache.has(roleId);
 
-		if (hasRole) {
-			console.log("User has Ignore role");
-			return;
+			if (hasRole) {
+				console.log("User has Ignore role");
+				return;
+			}
 		}
 
 		if (rxt(message, /\bass\b/i)) {
