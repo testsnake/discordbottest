@@ -97,10 +97,13 @@ function nPR(message, text) {
 }
 
 
-function errMsg(err) {
+async function errMsg(err) {
 	
 	console.log("unhandled error");
 	console.log(err);
+
+	const loggingChannel = await client.channels.fetch(loggingChannelId);
+	if (!loggingChannel) return;
 
 	const embed = {
 			color: parseInt('ff0000', 16),
@@ -116,7 +119,7 @@ function errMsg(err) {
 			}
 		};
 
-		client.channels.fetch(loggingChannelId).send({ embeds: [embed] });
+		loggingChannel.send({ embeds: [embed] });
 
 }
 
