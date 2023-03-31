@@ -109,15 +109,9 @@ async function errMsg(err) {
 	}
 	console.log("logging channel found");
 
-	const embed = {
-			color: parseInt('ff0000', 16),
-			author: {
-				name: user.tag,
-			},
-			description: `MikuBot has Encountered an Error\n${err}`,
-		};
+
 	console.log("error message created")
-	loggingChannel.send({ embeds: [embed] });
+	loggingChannel.send({ content: `Error: ${err}` });
 	console.log("error message sent");
 
 }
