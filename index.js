@@ -141,6 +141,8 @@ client.on('messageCreate', (message) => {
 		if(message.author.bot) return;
 		console.log("Received a message: " + message.content);
 
+
+
 		const channelIdEmergancy = '1008921373000863754';
 	  	// Check if the message is in #emergency-meeting
 
@@ -156,6 +158,15 @@ client.on('messageCreate', (message) => {
 			}
 		}
 
+
+		//memes
+		const roleId = '1091208299111776318';
+		const hasRole = user.roles.cache.has(roleId);
+
+		if (hasRole) {
+			console.log("User has Ignore role");
+			return;
+		}
 
 		if (rxt(message, /\bass\b/i)) {
 			nPR(message, 'https://cdn.discordapp.com/attachments/421865513820618752/1071615776127201424/169F55F1-C038-41DD-9264-BD3D9E8C6D60.gif');
