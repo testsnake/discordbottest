@@ -124,6 +124,7 @@ async function errMsg(err) {
 		};
 
 	loggingChannel.send({ embeds: [embed] });
+	console.log("error message sent");
 
 }
 
