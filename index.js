@@ -103,7 +103,10 @@ async function errMsg(err) {
 	console.log(err);
 
 	const loggingChannel = await client.channels.fetch(loggingChannelId);
-	if (!loggingChannel) return;
+	if (!loggingChannel) {
+		console.log("logging channel not found");
+		return;
+	}
 
 	const embed = {
 			color: parseInt('ff0000', 16),
@@ -119,7 +122,7 @@ async function errMsg(err) {
 			}
 		};
 
-		loggingChannel.send({ embeds: [embed] });
+	loggingChannel.send({ embeds: [embed] });
 
 }
 
@@ -139,32 +142,31 @@ client.once("ready", async client => {
 	loggingChannel.send({ embeds: [embed] });
 });
 
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
 	try {
-		if(message.author.bot) return;
+		if (message.author.bot) return;
 		console.log("Received a message: " + message.content);
 
 
-
 		const channelIdEmergancy = '1008921373000863754';
-	  	// Check if the message is in #emergency-meeting
+		// Check if the message is in #emergency-meeting
 
 		if (message.channel.id === channelIdEmergancy) {
 			if (rxt(message, /brogamer/i)) {
 
 
 				message.reply(`Go to <#1033012124311617577> pls.`)
-				.then(msg => {
-					setTimeout(() => msg.delete(), 5000)
-				})
-				.catch(console.error);
+					.then(msg => {
+						setTimeout(() => msg.delete(), 5000)
+					})
+					.catch(console.error);
 			}
 		}
 
 
 		//memes
 		const roleId = '1091208299111776318';
-		const hasRole = message.author.roles.cache.has(roleId);
+		const hasRole = await message.author.roles.cache.has(roleId);
 
 		if (hasRole) {
 			console.log("User has Ignore role");
@@ -209,8 +211,8 @@ client.on('messageCreate', (message) => {
 			nPR(message, `https://tenor.com/view/lesbian-yuri-kiss-anime-gif-23631557`);
 		} else if (rxt(message, /politic/i)) {
 			nPR(message, `https://cdn.discordapp.com/attachments/1008978799989362808/1075928778032808017/image.png`);
-		}  else if (rxt(message, /rule 34/i)) {
-			nPR(message, `https://cdn.discordapp.com/attachments/1009649075227984062/1075903061429604442/image.png`); 
+		} else if (rxt(message, /rule 34/i)) {
+			nPR(message, `https://cdn.discordapp.com/attachments/1009649075227984062/1075903061429604442/image.png`);
 		} else if (rxt(message, /rule 39/i)) {
 			nPR(message, `https://psychicpostpirate.files.wordpress.com/2016/05/laws_of_anime__39_by_catsvrsdogscatswin-d79n81y.jpg?w=469`);
 		} else if (rxt(message, /rule 419/i)) {
@@ -226,7 +228,7 @@ client.on('messageCreate', (message) => {
 		} else if (rxt(message, /中国/)) {
 			nPR(message, `https://tenor.com/view/chinese-china-zhonguo-gif-20748132`);
 		}
-	} catch(err) {
+	} catch (err) {
 		console.log("---- ERROR MESSAGEEVENT ----");
 		console.log(err);
 		console.log("---- ERROR MESSAGEEVENT ----");
