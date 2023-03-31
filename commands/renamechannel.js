@@ -74,13 +74,13 @@ module.exports = {
 
                 // Send a message to the Brazil channel
                 const brazilChannel = await guild.channels.cache.get(brazilChannelId);
-                await brazilChannel.send(`🚨 Oh no! ${user.toString()} has just been sent to Brazil! Will they ever recover from this terrible fate? 😱`);
+                await brazilChannel.send(`🚨 ${user.toString()} has just been sent to Brazil! 😱`);
 
                 // Retrieve the user from Brazil after a variable duration
                 const retrievalDelay = getRandomRetrievalDelay();
-                const retrievalUnixTime = Math.floor(Date.now() / 1000) + Math.floor(retrievalDelay / 1000);
+                // const retrievalUnixTime = Math.floor(Date.now() / 1000) + Math.floor(retrievalDelay / 1000);
                 // Update the message to show the estimated retrieval time
-                await interaction.editReply(`${user.toString()} has been sent to Brazil! They will be retrieved in <t:${retrievalUnixTime}:R>.`);
+                await interaction.editReply(`${user.toString()} has been sent to Brazil!`);
                 setTimeout(async () => {
                     await user.roles.remove(brazilRole);
                     await user.roles.add('1008898695355449394');
@@ -90,7 +90,7 @@ module.exports = {
                     await interaction.channel.send(`${user.toString()} has been retrieved from Brazil!`);
 
                     // Send a message to the Brazil channel
-                    await brazilChannel.send(`🎉 Hooray! ${user.toString()} has miraculously escaped the clutches of Brazil! 🥳`);
+                    await brazilChannel.send(`🎉 ${user.toString()} has miraculously escaped Brazil! 🥳`);
                 }, retrievalDelay);
 
 
