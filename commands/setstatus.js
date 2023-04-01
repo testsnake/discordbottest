@@ -27,7 +27,7 @@ module.exports = {
 
         const status = interaction.options.getString('status');
         const type = interaction.options.getString('type');
-        await interaction.client.user.setActivity(status, { type: type });
+        await interaction.client.user.setPresence({ activities: [{ name: `${status}`, type: `${type}` }] });
         await interaction.reply({ content: `Status updated to: ${type[0].toUpperCase() + type.slice(1).toLowerCase()} ${status}`, ephemeral: true });
     },
 };
