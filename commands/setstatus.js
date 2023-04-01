@@ -40,7 +40,7 @@ module.exports = {
             return await interaction.reply({ content: `${activityType} Invalid activity type.`, ephemeral: true });
         }
 
-        await interaction.client.user.setPresence({ activities: [{ name: `${status}`, type: ActivityType[activityType] }], status: 'dnd' });
+        await interaction.client.user.setPresence({ activities: [{ name: `${status}`, type: ActivityType[activityType] }], status: 'online' });
         await interaction.reply({ content: `Status updated to: ${type}`, ephemeral: true });
     },
 };
