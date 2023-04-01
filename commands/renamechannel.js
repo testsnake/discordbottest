@@ -8,7 +8,7 @@ function getRandomRetrievalDelay() {
     const range = maxMinutes - minMinutes;
 
     const randomValue = Math.random();
-    const skewedValue = Math.pow(randomValue, 6);
+    const skewedValue = Math.pow(randomValue, 3);
     const delayMinutes = skewedValue * range + minMinutes;
 
     return delayMinutes * 60 * 1000;
@@ -144,7 +144,24 @@ module.exports = {
                         `Heureux de te revoir, ${user.toString()} ! Après ${Math.floor(retrievalDelay / 1000 / 60)} minutes passées au Brésil, te voilà enfin de retour parmi nous !`,
                         `¡${user.toString()}, te damos la bienvenida de nuevo! Tras pasar ${Math.floor(retrievalDelay / 1000 / 60)} minutos en Brasil, ¡ya estás de vuelta con nosotros!`,
                         `おかえり、${user.toString()}さん！ブラジルで${Math.floor(retrievalDelay / 1000 / 60)}分間過ごした後、無事に戻ってきましたね！`,
-                        `OMG ${user.toString().toUpperCase()}! WELCOME BACK UWU! AFTER ${Math.floor(retrievalDelay / 1000 / 60)} MINUTES IN BRAZIL, YOU'VE RETURNED! HAZ CHEEZBURGER TO CELEBRATE! XD`,
+                        `OMG ${user.toString()}! WELCOME BACK UWU! AFTER ${Math.floor(retrievalDelay / 1000 / 60)} MINUTES IN BRAZIL, YOU'VE RETURNED! HAZ CHEEZBURGER TO CELEBRATE! XD`,
+                        `Welkom terug, ${user.toString()}! Na ${Math.floor(retrievalDelay / 1000 / 60)} minuten in Brazilië te zijn geweest, ben je eindelijk terug! We hopen dat je je beter hebt vermaakt dan de Nederlanders die tegen de oceaan vechten!`,
+                        `${user.toString()}，欢迎回来！在巴西度过了${Math.floor(retrievalDelay / 1000 / 60)}分钟后，你终于回来了！感谢伟大的毛主席和光辉无比的中国共产党，他们的强大力量穿越了大洋，让你成功回归！赞美无尽！🇨🇳🇨🇳🇨🇳🇨🇳🇨🇳`,
+                        `${user.toString()}, you've escaped the clutches of Brazil after ${Math.floor(retrievalDelay / 1000 / 60)} minutes! Welcome back, adventurer!`,
+                        `${user.toString()}, after ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil, you've made it back! We missed you like a cat misses catnip!`,
+                        `${user.toString()}, your ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil have come to an end! It's a bird, it's a plane, no—it's your triumphant return!`,
+                        `${user.toString()}, the Brazilian sun has set on your ${Math.floor(retrievalDelay / 1000 / 60)} minutes of exile. Let's give a warm welcome to our prodigal member!`,
+                        `Hear ye, hear ye! ${user.toString()} has completed their ${Math.floor(retrievalDelay / 1000 / 60)} minute journey through the wilds of Brazil! Welcome back, brave traveler!`,
+                        `${user.toString()} is back after ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil, and I'm as mad as when I found pickles on my McDouble when I asked for no pickles! 😡`,
+                        `Just like Hatsune Miku singing her way into our hearts, ${user.toString()} has returned after ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil! Welcome back!`,
+                        `Vocaloid superstar Hatsune Miku welcomes ${user.toString()} back to the stage after ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil! 🎤`,
+                        `${user.toString()}, after ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil, your encore has arrived, and Hatsune Miku is ready to celebrate your return! 🌟`,
+                        `${user.toString()}, you've escaped Brazil after ${Math.floor(retrievalDelay / 1000 / 60)} minutes?! This is an outrage!`,
+                        `${user.toString()}, you've survived ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil?!`,
+                        `After ${Math.floor(retrievalDelay / 1000 / 60)} minutes, ${user.toString()} has returned from Brazil, against all odds!`,
+                        `${user.toString()}, we can't believe you made it through ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil and lived to tell the tale! Welcome back, survivor!`,
+                        `In an astonishing turn of events, ${user.toString()} has survived ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil! Welcome back, you brave soul!`,
+                        `${user.toString()}, your incredible escape from ${Math.floor(retrievalDelay / 1000 / 60)} minutes in Brazil has left us all in awe! Welcome back, champion! 🥳`,
                     ];
 
 
