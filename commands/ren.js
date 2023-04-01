@@ -129,6 +129,11 @@ module.exports = {
                         `After ${Math.floor(retrievalDelay / 1000 / 60)} minutes, ${user.toString()} has left Brazil and rejoined us!`,
                         `Back from Brazil! ${user.toString()} has served their ${Math.floor(retrievalDelay / 1000 / 60)}-minute sentence!`,
                         `Rejoice! ${user.toString()} has made it back from their ${Math.floor(retrievalDelay / 1000 / 60)}-minute Brazilian journey!`,
+                        `Bem-vindo novamente, ${user.toString()}! Depois de passar ${Math.floor(retrievalDelay / 1000 / 60)} minutos no Brasil, você está de volta conosco!`,
+                        `Heureux de te revoir, ${user.toString()} ! Après ${Math.floor(retrievalDelay / 1000 / 60)} minutes passées au Brésil, te voilà enfin de retour parmi nous !`,
+                        `¡${user.toString()}, te damos la bienvenida de nuevo! Tras pasar ${Math.floor(retrievalDelay / 1000 / 60)} minutos en Brasil, ¡ya estás de vuelta con nosotros!`,
+                        `おかえり、${user.toString()}さん！ブラジルで${Math.floor(retrievalDelay / 1000 / 60)}分間過ごした後、無事に戻ってきましたね！`,
+                        `OMG ${user.toString().toUpperCase()}! WELCOME BACK UWU! AFTER ${Math.floor(retrievalDelay / 1000 / 60)} MINUTES IN BRAZIL, YOU'VE RETURNED! HAZ CHEEZBURGER TO CELEBRATE! XD`,
                     ];
 
 
