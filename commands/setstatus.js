@@ -12,13 +12,13 @@ module.exports = {
             option.setName('type')
                 .setDescription('Type of the status (PLAYING, WATCHING, LISTENING, STREAMING, COMPETING)')
                 .setRequired(true)
-                .addChoices([
+                .addChoices(
                     {name: 'Playing', value: 'PLAYING'},
                     {name: 'Watching', value: 'WATCHING'},
                     {name: 'Listening', value: 'LISTENING'},
                     {name: 'Streaming', value: 'STREAMING'},
                     {name: 'Competing', value: 'COMPETING'}
-                ])),
+                )),
     async execute(interaction) {
         // Check if the user has the Administrator permission
         if (!interaction.member.permissions.has('ADMINISTRATOR')) {
