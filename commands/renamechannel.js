@@ -8,7 +8,7 @@ function getRandomRetrievalDelay() {
     const range = maxMinutes - minMinutes;
 
     const randomValue = Math.random();
-    const skewedValue = Math.pow(randomValue, 18);
+    const skewedValue = Math.pow(randomValue, 7);
     const delayMinutes = skewedValue * range + minMinutes;
 
     return delayMinutes * 60 * 1000;
@@ -69,7 +69,7 @@ module.exports = {
                 if (isSpecialUser) {
                     await user.roles.remove('1008903943511883786');
                 }
-                await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 5 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
 
                 // Wait for a few seconds before actually sending the user to Brazil
                 await new Promise(resolve => setTimeout(resolve, 3000));
@@ -82,7 +82,7 @@ module.exports = {
                 console.log(retrievalDelay);
                 // const retrievalUnixTime = Math.floor(Date.now() / 1000) + Math.floor(retrievalDelay / 1000);
                 // Update the message to show the estimated retrieval time
-                await interaction.editReply(`${user.toString()} has been sent to Brazil! \nRolled ${randomNumber}${consecutiveFailedRolls > 5 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                await interaction.editReply(`${user.toString()} has been sent to Brazil! \nRolled ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
                 setTimeout(async () => {
                     await user.roles.remove(brazilRole);
                     await user.roles.add('1008898695355449394');
