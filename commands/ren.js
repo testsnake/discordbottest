@@ -16,7 +16,7 @@ function getRandomRetrievalDelay() {
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('renamechannel')
+        .setName('ren')
         .setDescription('1 in 15 chance to rename a specific channel, otherwise send user to Brazil.')
         .addStringOption(option =>
             option
