@@ -77,6 +77,14 @@ module.exports = {
 
             } else {
                 consecutiveFailedRolls++;
+                if (consecutiveFailedRolls === 11) {
+                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled an ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                } else {
+                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                }
+
+                // Wait for a few seconds before actually sending the user to Brazil
+                await new Promise(resolve => setTimeout(resolve, 3000));
                 // Otherwise, send the user to Brazil
                 const user = interaction.member;
                 const isSpecialUser = user.roles.cache.has('1008903943511883786');
@@ -86,15 +94,13 @@ module.exports = {
                 if (isSpecialUser) {
                     await user.roles.remove('1008903943511883786');
                 }
-                if (consecutiveFailedRolls === 11) {
-                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled an ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                } else {
-                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                }
 
-                // Wait for a few seconds before actually sending the user to Brazil
-                await new Promise(resolve => setTimeout(resolve, 3000));
-                await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+
+                if (consecutiveFailedRolls === 11) {
+                    await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled an ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                } else {
+                    await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+                }
 
 
 
