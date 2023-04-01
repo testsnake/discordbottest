@@ -13,3 +13,4 @@
 /song - List of Eden Project Songs
 /usercount - Shows the current user count
 /upgrade /downgrade - Upgrade/downgrade guide for mm+
+/togglebotresponse - Toggles bot responses to messages

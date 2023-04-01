@@ -5,3 +5,5 @@
 /hfr - Hate France
 /uwu - uwuifies your message
 /youaregoingtobrazil - Sends the user to brazil
+/renamechannel - 1 in 15 chance of renaming <%1009649075227984062>
+/listbrazil - list of souls trapped in brazil
