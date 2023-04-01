@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { Client, Intents, ActivityType } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,11 +14,11 @@ module.exports = {
                 .setDescription('Type of the status (PLAYING, WATCHING, LISTENING, STREAMING, COMPETING)')
                 .setRequired(true)
                 .addChoices(
-                    {name: 'Playing', value: 'PLAYING'},
-                    {name: 'Watching', value: 'WATCHING'},
-                    {name: 'Listening', value: 'LISTENING'},
-                    {name: 'Streaming', value: 'STREAMING'},
-                    {name: 'Competing', value: 'COMPETING'}
+                    {name: 'Playing', value: 'Playing'},
+                    {name: 'Watching', value: 'Watching'},
+                    {name: 'Listening', value: 'Listening'},
+                    {name: 'Streaming', value: 'Streaming'},
+                    {name: 'Competing', value: 'Competing'}
                 )),
     async execute(interaction) {
         // Check if the user has the Administrator permission
@@ -26,8 +27,20 @@ module.exports = {
         }
 
         const status = interaction.options.getString('status');
-        const type = interaction.options.getString('type');
-        await interaction.client.user.setPresence({ activities: [{ name: `${status}`, type: `${type}` }] });
-        await interaction.reply({ content: `Status updated to: ${type[0].toUpperCase() + type.slice(1).toLowerCase()} ${status}`, ephemeral: true });
+        const type = interaction.options.getString('type').toLowerCase();
+        const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
+
+
+        const activityType = capitalizedType;
+        const validActivityTypes = Object.keys(ActivityType).filter(key => isNaN(parseInt(key)));
+        console.log(ActivityType)
+        console.log(validActivityTypes)
+        console.log(activityType)
+        if (!validActivityTypes.includes(activityType)) {
+            return await interaction.reply({ content: `${activityType} Invalid activity type.`, ephemeral: true });
+        }
+
+        await interaction.client.user.setPresence({ activities: [{ name: `${status}`, type: ActivityType[activityType] }], status: 'dnd' });
+        await interaction.reply({ content: `Status updated to: ${type}`, ephemeral: true });
     },
 };
