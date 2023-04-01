@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, Discord } = require('discord.js');
 
+let consecutiveFailedRolls = 0;
+
 function getRandomRetrievalDelay() {
     const minMinutes = 3;
     const maxMinutes = 60;
@@ -47,15 +49,17 @@ module.exports = {
 
 
         // Generate a random number between 1 and 10
-        const randomNumber = Math.floor(Math.random() * 9) + 1;
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
 
         try {
             // If randomNumber is 1, rename the channel
             if (randomNumber === 1) {
+                consecutiveFailedRolls = 0;
                 const channel = await guild.channels.cache.get(targetChannelId);
                 await channel.setName(newChannelName);
                 await interaction.editReply(`The channel has been renamed to **${newChannelName}** by ${interaction.user.toString()}!`);
             } else {
+                consecutiveFailedRolls++;
                 // Otherwise, send the user to Brazil
                 const user = interaction.member;
                 const isSpecialUser = user.roles.cache.has('1008903943511883786');
@@ -65,7 +69,7 @@ module.exports = {
                 if (isSpecialUser) {
                     await user.roles.remove('1008903943511883786');
                 }
-                await interaction.editReply(`${user.toString()} will be sent to Brazil!`);
+                await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 5 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
 
                 // Wait for a few seconds before actually sending the user to Brazil
                 await new Promise(resolve => setTimeout(resolve, 3000));
@@ -78,7 +82,7 @@ module.exports = {
                 console.log(retrievalDelay);
                 // const retrievalUnixTime = Math.floor(Date.now() / 1000) + Math.floor(retrievalDelay / 1000);
                 // Update the message to show the estimated retrieval time
-                await interaction.editReply(`${user.toString()} has been sent to Brazil!`);
+                await interaction.editReply(`${user.toString()} has been sent to Brazil! \nRolled ${randomNumber}${consecutiveFailedRolls > 5 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
                 setTimeout(async () => {
                     await user.roles.remove(brazilRole);
                     await user.roles.add('1008898695355449394');
