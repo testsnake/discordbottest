@@ -49,7 +49,7 @@ module.exports = {
 
 
         // Generate a random number between 1 and 10
-        const randomNumber = Math.floor(Math.random() * 15) + 1;
+        const randomNumber = Math.floor(Math.random() * 50) + 1;
 
         try {
             // If randomNumber is 1, rename the channel
