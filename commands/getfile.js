@@ -16,6 +16,6 @@ module.exports = {
 
 
 
-		await interaction.reply({ content: clapText, allowedMentions: { repliedUser: false  }});
+		await interaction.reply({ content: "command is WIP", allowedMentions: { repliedUser: false  }});
 	},
 };

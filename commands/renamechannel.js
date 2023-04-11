@@ -17,7 +17,7 @@ function getRandomRetrievalDelay() {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('renamechannel')
-        .setDescription('1 in 15 chance to rename a specific channel, otherwise send user to Brazil.')
+        .setDescription('1 in 50 chance to rename a specific channel, otherwise send user to Brazil.')
         .addStringOption(option =>
             option
                 .setName('newname')
@@ -61,19 +61,42 @@ module.exports = {
                 await channel.setName(newChannelName);
 
                 let streakMessage = '';
-                if (previousStreak > 10 && previousStreak <= 15) {
+                if (previousStreak > 10 && previousStreak <= 20) {
                     streakMessage = `, breaking a ${previousStreak} roll streak!`;
-                } else if (previousStreak > 15 && previousStreak <= 20) {
+                } else if (previousStreak > 21 && previousStreak <= 31) {
                     streakMessage = `, shattering a ${previousStreak} roll streak!`;
-                } else if (previousStreak > 20 && previousStreak <= 38) {
-                    streakMessage = `, obliterating a colossal ${previousStreak} roll streak!`;
                 } else if (previousStreak === 39) {
-                    streakMessage = `, breaking an exactly 39 roll streak! Wow!`;
-                } else if (previousStreak >= 40) {
+                    streakMessage = `, breaking an exactly 39 roll streak! Wow! Miku Would be Proud!`;
+                } else if (previousStreak > 31 && previousStreak <= 40) {
+                    streakMessage = `, obliterating a colossal ${previousStreak} roll streak!`;
+                } else if (previousStreak >= 41 && previousStreak <= 50) {
                     streakMessage = `, destroying a nut busting ${previousStreak} roll streak!`;
+                } else if (previousStreak > 50 && previousStreak <= 60) {
+                    streakMessage = `, tearing apart a fantastic ${previousStreak} roll streak!`;
+                } else if (previousStreak > 60 && previousStreak < 69) {
+                    streakMessage = `, dismantling a magnificent ${previousStreak} roll streak!`;
+                } else if (previousStreak === 69) {
+                    streakMessage = `, ending a ***nice*** ${previousStreak} roll streak!`;
+                } else if (previousStreak > 69 && previousStreak <= 80) {
+                    streakMessage = `, crushing a glorious ${previousStreak} roll streak!`;
+                } else if (previousStreak > 80 && previousStreak <= 90) {
+                    streakMessage = `, decimating a superb ${previousStreak} roll streak!`;
+                } else if (previousStreak > 90 && previousStreak <= 100) {
+                    streakMessage = `, annihilating an outstanding ${previousStreak} roll streak!`;
+                } else if (previousStreak > 100 && previousStreak <= 200) {
+                    streakMessage = `, ending an unbelievable ${previousStreak} roll streak!`;
+                } else if (previousStreak > 200 && previousStreak < 420) {
+                    streakMessage = `, snapping a monumental ${previousStreak} roll streak!`;
+                } else if (previousStreak === 420) {
+                    streakMessage = `, blazing away a dank ${previousStreak} roll streak!`;
+                } else if (previousStreak > 420 && previousStreak <= 500) {
+                    streakMessage = `, terminating a legendary ${previousStreak} roll streak!`;
+                } else if (previousStreak > 500) {
+                    streakMessage = `, bringing down an epic ${previousStreak} roll streak!`;
                 }
 
-                await interaction.editReply(`The channel has been renamed to **${newChannelName}** by ${interaction.user.toString()}! They rolled a ${randomNumber}${streakMessage}`);
+
+            await interaction.editReply(`The channel has been renamed to **${newChannelName}** by ${interaction.user.toString()}! They rolled a ${randomNumber}${streakMessage}`);
 
             } else {
                 consecutiveFailedRolls++;
@@ -82,11 +105,8 @@ module.exports = {
                 const user = interaction.member;
                 const isSpecialUser = user.roles.cache.has('1008903943511883786');
                 const brazilRole = isSpecialUser ? '1091177439134228552' : '1084357826262085694';
-                if (consecutiveFailedRolls === 11) {
-                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled an ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                } else {
-                    await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                }
+                await interaction.editReply(`${user.toString()} will be sent to Brazil! They rolled a(n) ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+
 
                 // Wait for a few seconds before actually sending the user to Brazil
                 await new Promise(resolve => setTimeout(resolve, 3000));
@@ -97,11 +117,8 @@ module.exports = {
                 }
 
 
-                if (consecutiveFailedRolls === 11) {
-                    await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled an ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                } else {
-                    await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
-                }
+                await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a(n) ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
+
 
 
 

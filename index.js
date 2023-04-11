@@ -219,6 +219,8 @@ client.on('messageCreate', async (message) => {
 			nPR(message, `https://gfycat.com/PinkJubilantArgentinehornedfrog`);
 		} else if (rxt(message, /中国/)) {
 			nPR(message, `https://tenor.com/view/chinese-china-zhonguo-gif-20748132`);
+		} else if (rxt(message, /this goes hard/)) {
+			nPR(message, `https://i.redd.it/y0iwd3jjhgl81.jpg`);
 		}
 	} catch (err) {
 		console.log("---- ERROR MESSAGEEVENT ----");
