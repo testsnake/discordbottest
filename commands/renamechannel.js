@@ -25,6 +25,8 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
+        const loadingRole = '1096502071655669800';
+        await interaction.member.roles.add(loadingRole);
         await interaction.channel.sendTyping();
         const newChannelName = interaction.options.getString('newname');
         const guild = interaction.guild;
@@ -38,6 +40,9 @@ module.exports = {
             });
         }
 
+        if (interaction.member.roles.cache.has(loadingRole)) {
+            return await interaction.reply({ content: 'You are already rolling', ephemeral: true });
+        }
         const diceEmoji = '🎲';
         await interaction.reply({ content: `${diceEmoji} Rolling a random number.`, fetchReply: true });
         await interaction.channel.sendTyping();
@@ -129,6 +134,8 @@ module.exports = {
 
                 await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a(n) ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
 
+                //remove loading role
+                await user.roles.remove(loadingRole);
 
 
 
