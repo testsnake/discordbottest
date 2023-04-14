@@ -25,6 +25,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
+        await interaction.channel.sendTyping();
         const newChannelName = interaction.options.getString('newname');
         const guild = interaction.guild;
         const targetChannelId = '1009649075227984062';
@@ -39,21 +40,30 @@ module.exports = {
 
         const diceEmoji = '🎲';
         await interaction.reply({ content: `${diceEmoji} Rolling a random number.`, fetchReply: true });
+        await interaction.channel.sendTyping();
 
         // Wait for 3 seconds before revealing the result
         await new Promise(resolve => setTimeout(resolve, 1000));
         await interaction.editReply({ content: `${diceEmoji} Rolling a random number..`, fetchReply: true });
+        await interaction.channel.sendTyping();
+
         await new Promise(resolve => setTimeout(resolve, 1000));
         await interaction.editReply({ content: `${diceEmoji} Rolling a random number...`, fetchReply: true });
+
+        await interaction.channel.sendTyping();
         await new Promise(resolve => setTimeout(resolve, 1000));
 
 
         // Generate a random number between 1 and 10
-        const randomNumber = Math.floor(Math.random() * 50) + 1;
+        let randomNumber = Math.floor(Math.random() * 50) + 1;
 
         try {
             // If randomNumber is 1, rename the channel
-            if (randomNumber === 1) {
+            if (randomNumber === 39 && /troubleshooting/i.test(newChannelName)) {
+                randomNumber++;
+            }
+            if (randomNumber === 39) {
+
 
                 const previousStreak = consecutiveFailedRolls;
                 consecutiveFailedRolls = 0;
@@ -129,6 +139,8 @@ module.exports = {
                 // Update the message to show the estimated retrieval time
                 // await interaction.editReply(`${user.toString()} has been sent to Brazil! They rolled a ${randomNumber}${consecutiveFailedRolls > 8 ? `\n${consecutiveFailedRolls} failed rolls in a row!` : ''}`);
                 setTimeout(async () => {
+                    await interaction.channel.sendTyping();
+                    await new Promise(resolve => setTimeout(resolve, 3000));
                     await user.roles.remove(brazilRole);
                     await user.roles.add('1008898695355449394');
                     if (isSpecialUser) {
