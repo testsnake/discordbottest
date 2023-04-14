@@ -26,6 +26,9 @@ module.exports = {
         ),
     async execute(interaction) {
         const loadingRole = '1096502071655669800';
+        if (interaction.member.roles.cache.has(loadingRole)) {
+            return await interaction.reply({ content: 'You are already rolling', ephemeral: true });
+        }
         await interaction.member.roles.add(loadingRole);
         await interaction.channel.sendTyping();
         const newChannelName = interaction.options.getString('newname');
@@ -40,9 +43,7 @@ module.exports = {
             });
         }
 
-        if (interaction.member.roles.cache.has(loadingRole)) {
-            return await interaction.reply({ content: 'You are already rolling', ephemeral: true });
-        }
+
         const diceEmoji = '🎲';
         await interaction.reply({ content: `${diceEmoji} Rolling a random number.`, fetchReply: true });
         await interaction.channel.sendTyping();
