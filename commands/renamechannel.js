@@ -46,17 +46,17 @@ module.exports = {
 
         const diceEmoji = '🎲';
         await interaction.reply({ content: `${diceEmoji} Rolling a random number.`, fetchReply: true });
-        await interaction.channel.sendTyping();
+
 
         // Wait for 3 seconds before revealing the result
         await new Promise(resolve => setTimeout(resolve, 1000));
         await interaction.editReply({ content: `${diceEmoji} Rolling a random number..`, fetchReply: true });
-        await interaction.channel.sendTyping();
+
 
         await new Promise(resolve => setTimeout(resolve, 1000));
         await interaction.editReply({ content: `${diceEmoji} Rolling a random number...`, fetchReply: true });
 
-        await interaction.channel.sendTyping();
+
         await new Promise(resolve => setTimeout(resolve, 1000));
 
 
@@ -215,7 +215,8 @@ module.exports = {
             }
         } catch (error) {
             console.error(error);
-            return await interaction.reply({
+            await interaction.member.roles.remove('1096502071655669800');
+            return await interaction.followUp({
                 content:
                     'There was an error processing your request. Please try again.',
                 ephemeral: true,
