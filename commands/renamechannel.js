@@ -75,6 +75,7 @@ module.exports = {
                 consecutiveFailedRolls = 0;
                 const channel = await guild.channels.cache.get(targetChannelId);
                 await channel.setName(newChannelName);
+                await interaction.user.roles.remove(loadingRole);
 
                 let streakMessage = '';
                 if (previousStreak > 10 && previousStreak <= 20) {
