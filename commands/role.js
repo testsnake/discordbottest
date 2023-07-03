@@ -9,6 +9,7 @@ const roles = {
     'Kaito': '1103050562913706125',
     'Teto': '1103050727233962168',
     'Gumi': '1103050911347130528',
+    'HisoStreamNotfications': '1069068249964216410',
 };
 
 module.exports = {
@@ -27,7 +28,8 @@ module.exports = {
                     { name: 'Meiko', value: roles.Meiko },
                     { name: 'Kaito', value: roles.Kaito },
                     { name: 'Teto', value: roles.Teto },
-                    { name: 'Gumi', value: roles.Gumi }
+                    { name: 'Gumi', value: roles.Gumi },
+                    { name: 'Hiso Stream Notfications', value: roles.HisoStreamNotfications }
                 ),
         ),
     async execute(interaction) {
