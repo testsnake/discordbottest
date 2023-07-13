@@ -35,7 +35,12 @@ module.exports = {
                     { name: 'Kaito', value: roles.Kaito },
                     { name: 'Teto', value: roles.Teto },
                     { name: 'Gumi', value: roles.Gumi },
-                    { name: 'Hiso Stream Notfications', value: roles.HisoStreamNotfications }
+                    { name: 'Hiso Stream Notfications', value: roles.HisoStreamNotfications },
+                    { name: 'PokeSlow', value: roles.Pokeslow },
+                    { name: 'Eden', value: roles.Eden },
+                    { name: 'Hiso BodyGuard', value: roles.HisoBodyGuard },
+                    { name: 'Hiso DickRider', value: roles.HisoDickRider },
+                    { name: 'ignored By Bot', value: roles.ignoredByBot },
                 ),
         ),
     async execute(interaction) {
