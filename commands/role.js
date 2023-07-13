@@ -10,6 +10,12 @@ const roles = {
     'Teto': '1103050727233962168',
     'Gumi': '1103050911347130528',
     'HisoStreamNotfications': '1069068249964216410',
+    'Pokeslow': '1129104083148623872',
+    'Eden': '1129104204150087781',
+    'HisoBodyGuard': '1128820873940455534',
+    'HisoDickRider': '1025635769546723428',
+    'ignoredByBot': '1091208299111776318',
+
 };
 
 module.exports = {
